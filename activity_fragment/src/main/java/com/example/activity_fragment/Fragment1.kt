@@ -6,8 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import kotlinx.android.synthetic.main.fragment_1.*
-import kotlinx.android.synthetic.main.fragment_2.*
-import kotlinx.android.synthetic.main.fragment_2.btnFragment3
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
