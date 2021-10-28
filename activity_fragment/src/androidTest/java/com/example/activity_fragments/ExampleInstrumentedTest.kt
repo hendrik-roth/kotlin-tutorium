@@ -1,4 +1,4 @@
-package com.example.activity_fragment
+package com.example.activity_fragments
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

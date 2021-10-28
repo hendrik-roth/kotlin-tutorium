@@ -1,4 +1,4 @@
-package com.example.activity_fragment
+package com.android.introduction
 
 import org.junit.Test
 
