@@ -9,3 +9,4 @@ dependencyResolutionManagement {
 rootProject.name = "kotlin-tutorium"
 include ':activity_fragment'
 include ':introduction'
+include ':database'
