@@ -67,6 +67,7 @@ class LoginFragment : Fragment() {
         btnToRegistration.setOnClickListener {
             activity?.supportFragmentManager?.beginTransaction()?.apply {
                 replace(R.id.fragment_container, RegisterFragment())
+                commit()
             }
         }
 

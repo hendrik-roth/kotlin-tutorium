@@ -9,8 +9,8 @@ class MyDBHelper(context: Context) : SQLiteOpenHelper(context, "USER", null, 1) 
     override fun onCreate(db: SQLiteDatabase?) {
         val createStatement = "CREATE TABLE USER (" +
                 "ID INTEGER PRIMARY KEY AUTOINCREMENT," +
-                "EMAIL STRING NOT NULL, " +
-                "PW STRING NOT NULL)"
+                "EMAIL TEXT NOT NULL, " +
+                "PW TEXT NOT NULL)"
         db?.execSQL(createStatement)
     }
 

@@ -10,6 +10,7 @@ class MainActivity : AppCompatActivity() {
 
         supportFragmentManager.beginTransaction().apply {
             replace(R.id.fragment_container, LoginFragment())
+            commit()
         }
     }
 }

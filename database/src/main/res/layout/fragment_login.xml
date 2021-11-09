@@ -12,15 +12,15 @@
 
         <EditText
             android:id="@+id/et_login_email"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
             android:layout_width="218dp"
             android:layout_height="60dp"
-            android:layout_marginTop="276dp"
+            android:layout_marginTop="150dp"
             android:ems="10"
             android:hint="@string/e_mail"
-            android:inputType="textEmailAddress" />
+            android:inputType="textEmailAddress"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
             android:id="@+id/et_login_pw"

@@ -51,16 +51,16 @@ class RegisterFragment : Fragment() {
             val email: String = etRegisterEmail.text.toString()
             val pw: String = etRegisterPw.text.toString()
 
-            val dbHelper = MyDBHelper(MainActivity().applicationContext)
-            val db = dbHelper.writableDatabase
-            val insertStatement: String = "INSERT INTO USER (email, pw) VALUES ($email, $pw);"
-            db.execSQL(insertStatement)
+            val dbHelper = activity?.applicationContext?.let { it1 -> MyDBHelper(it1) }
+            val insertStatement: String = "INSERT INTO USER VALUES ($email, $pw);"
+            dbHelper?.writableDatabase?.execSQL(insertStatement)
             Snackbar.make(view, "Registrierung erfolgreich!", Snackbar.LENGTH_SHORT).show()
         }
 
         btnToLogin.setOnClickListener {
             activity?.supportFragmentManager?.beginTransaction()?.apply {
                 replace(R.id.fragment_container, LoginFragment())
+                commit()
             }
         }
     }
