@@ -51,7 +51,7 @@ class LoginFragment : Fragment() {
             val email: String = etLoginEmail.text.toString()
             val pw: String = etLoginPw.text.toString()
 
-            val dbHelper = MyDBHelper(MainActivity().applicationContext)
+            val dbHelper = MyDBHelper(requireContext().applicationContext)
             val db = dbHelper.readableDatabase
             val queryStatement: String = "SELECT ID FROM USER WHERE email='$email' and pw='$pw'"
             val results = db.rawQuery(queryStatement, null)
@@ -61,6 +61,8 @@ class LoginFragment : Fragment() {
             } else {
                 Snackbar.make(it, "Falsche / Nicht Vorhandene Daten", Snackbar.LENGTH_SHORT).show()
             }
+
+            results.close()
 
         }
 

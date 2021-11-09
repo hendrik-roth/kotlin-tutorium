@@ -1,5 +1,6 @@
 package com.android.database
 
+import android.content.ContentValues
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -51,9 +52,14 @@ class RegisterFragment : Fragment() {
             val email: String = etRegisterEmail.text.toString()
             val pw: String = etRegisterPw.text.toString()
 
-            val dbHelper = activity?.applicationContext?.let { it1 -> MyDBHelper(it1) }
-            val insertStatement: String = "INSERT INTO USER VALUES ($email, $pw);"
-            dbHelper?.writableDatabase?.execSQL(insertStatement)
+            val dbHelper = MyDBHelper(requireActivity().applicationContext)
+            val db = dbHelper.readableDatabase
+
+            val contentValues = ContentValues()
+            contentValues.put("EMAIL", email)
+            contentValues.put("PW", pw)
+
+            db.insert("User", null, contentValues)
             Snackbar.make(view, "Registrierung erfolgreich!", Snackbar.LENGTH_SHORT).show()
         }
 
