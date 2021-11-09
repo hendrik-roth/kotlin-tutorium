@@ -5,6 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.EditText
+import com.google.android.material.snackbar.Snackbar
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -37,23 +40,29 @@ class RegisterFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_register, container, false)
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment RegisterFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            RegisterFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val etRegisterEmail: EditText = view.findViewById(R.id.et_register_email)
+        val etRegisterPw: EditText = view.findViewById(R.id.et_register_pw)
+        val btnRegister: Button = view.findViewById(R.id.btn_register)
+        val btnToLogin: Button = view.findViewById(R.id.btn_to_login)
+
+        btnRegister.setOnClickListener {
+            val email: String = etRegisterEmail.text.toString()
+            val pw: String = etRegisterPw.text.toString()
+
+            val dbHelper = MyDBHelper(MainActivity().applicationContext)
+            val db = dbHelper.writableDatabase
+            val insertStatement: String = "INSERT INTO USER (email, pw) VALUES ($email, $pw);"
+            db.execSQL(insertStatement)
+            Snackbar.make(view, "Registrierung erfolgreich!", Snackbar.LENGTH_SHORT).show()
+        }
+
+        btnToLogin.setOnClickListener {
+            activity?.supportFragmentManager?.beginTransaction()?.apply {
+                replace(R.id.fragment_container, LoginFragment())
             }
+        }
     }
+
 }
