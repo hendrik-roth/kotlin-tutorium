@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">api</string>
+    <string name="sendRequest">Corona-Fallzahlen in Deutschland!</string>
+</resources>
