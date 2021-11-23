@@ -14,5 +14,13 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        runBlocking {
+            launch {
+                val client = HttpClient()
+                val response: Response = client.get("https://api.corona-zahlen.org/germany")
+                Log.d("response", response.statusText.toString())
+            }
+        }
     }
 }
